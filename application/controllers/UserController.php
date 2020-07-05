@@ -28,4 +28,9 @@ class UserController extends CI_Controller
         $this->session->sess_destroy();
         redirect(base_url('/'));
     }
+    public function coba()
+    {
+        $data['data'] = $this->pupukModel->allPupuk();
+        $this->load->view('pelanggan/coba', $data);
+    }
 }

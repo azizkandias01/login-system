@@ -11,23 +11,19 @@ class KeranjangController extends CI_Controller
     }
     public function Index()
     {
-        //$cart = $this->cart->contents();
-        // if (!isset($cart)) {
-        //     $this->load->view('templates/pelanggan_head');
-        //     $this->load->view('templates/pelanggan_header');
-        //     $this->load->view('pelanggan/pelanggan_keranjangKosong');
-        //     $this->load->view('templates/pelanggan_footer');
-        //     $this->load->view('templates/pelanggan_loader');
-        // } else {
-        // $cart = $this->cart->contents();
-        $m = "a";
-
-        $this->load->view('templates/pelanggan_head');
-        $this->load->view('templates/pelanggan_header');
-        $this->load->view('pelanggan/pelanggan_keranjang', $m);
-        $this->load->view('templates/pelanggan_footer');
-        $this->load->view('templates/pelanggan_loader');
-        //}
+        $cart['data'] = $this->cart->contents();
+        if (!isset($cart)) {
+            $this->load->view('templates/pelanggan_head');
+            $this->load->view('templates/pelanggan_header');
+            $this->load->view('pelanggan/pelanggan_keranjangKosong');
+            $this->load->view('templates/pelanggan_footer');
+            $this->load->view('templates/pelanggan_loader');
+        } else {
+            $this->load->view('templates/pelanggan_head');
+            $this->load->view('templates/pelanggan_header');
+            $this->load->view('pelanggan/pelanggan_keranjang', $cart);
+            $this->load->view('templates/pelanggan_footer');
+        }
     }
     public function tambahKeranjang($id)
     {
@@ -39,14 +35,35 @@ class KeranjangController extends CI_Controller
             'name'    => $data[0]['nama_pupuk']
         );
         $this->cart->insert($insertData);
-        $this->Index();
+        redirect("KeranjangController/Index");
     }
-    public function semuaKeranjang()
+    public function hapusKeranjang($id)
     {
-        $cart = $this->cart->contents();
-        foreach ($cart as $keranjang) {
-            echo "nama : " . $keranjang['name'] . "<br>";
-        }
-        $this->load->view('pelanggan/pelanggan_keranjang', $cart);
+        $data = array(
+            'rowid' => $id,
+            'qty' => 0
+        );
+        $this->cart->update($data);
+        redirect("KeranjangController/Index");
+    }
+    public function editKeranjang()
+    {
+        $id = $this->input->get('product_id');
+        $qty = $this->input->get('product_qty');
+        $data = array(
+            'rowid' => $id,
+            'qty' => $qty
+        );
+        $this->cart->update($data);
+        redirect("KeranjangController/Index");
+    }
+    public function hapusSemua()
+    {
+        $this->cart->destroy();
+        redirect("KeranjangController/Index");
+    }
+    public function getAlldata()
+    {
+        return $this->cart->contents();
     }
 }

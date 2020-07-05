@@ -71,7 +71,7 @@
 
       <!-- Nav Item - Utilities Collapse Menu -->
       <li class="nav-item">
-        <a class="nav-link collapsed" href="#">
+        <a class="nav-link collapsed" href="<?= base_url('/PupukController/daftarPupuk') ?>">
           <i class="fa fa-list"></i>
           <span>Daftar Pupuk</span>
         </a>

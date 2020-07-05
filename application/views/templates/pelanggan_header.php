@@ -8,10 +8,10 @@
 
         <div class="collapse navbar-collapse" id="ftco-nav">
             <ul class="navbar-nav ml-auto">
-                <li class="nav-item"><a href="<?= base_url(); ?>UserController/Index" class="nav-link">Beranda</a>
+                <li class="nav-item"><a href="<?= base_url(); ?>UserController/Index" class="nav-link">Pupuk</a>
                 </li>
-                <li class="nav-item"><a href="AlatMusik.jsp" class="nav-link">Pesanan</a></li>
                 <li class="nav-item"><a href="<?= base_url(); ?>KeranjangController/Index" class="nav-link">Keranjang</a></li>
+                <li class="nav-item"><a href="<?= base_url(); ?>RiwayatController/Index" class="nav-link">Riwayat</a></li>
                 <li class="nav-item"><a href="about.jsp" class="nav-link">Tentang Kami</a></li>
                 <li class="nav-item"><a href="contact.jsp" class="nav-link">Hubungi Kami</a></li>
                 <?php if (!isset($_SESSION['name'])) { ?>

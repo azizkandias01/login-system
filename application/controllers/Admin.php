@@ -9,6 +9,7 @@ class Admin extends CI_Controller
         parent::__construct();
         $this->load->library('form_validation');
         $this->load->model('account');
+        $this->load->model('pupukModel');
     }
     public function akun()
     {
@@ -46,7 +47,6 @@ class Admin extends CI_Controller
         $hasil['data'] = $this->account->selectdata($id);
         $this->load->view('templates/index_header');
         $this->load->view('home/edit', $hasil);
-        $this->load->view('templates/index_footer');
     }
     public function editAction()
     {

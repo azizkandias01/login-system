@@ -3,11 +3,33 @@
         <circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00" /></svg></div>
 
 <script>
-    $('#orangeModalSubscription').on('show.bs.modal', function(event) {
-        var myVal = $(event.relatedTarget).data('val');
-        $(this).find(".modal-body").text(myVal);
+    $(document).ready(function() {
+
+        // get Edit Product
+        $('.btn-edit').on('click', function() {
+            // get data from button edit
+            const id = $(this).data('id');
+            const qty = $(this).data('qty');
+            // Set data to Form Edit
+            $('.product_id').val(id);
+            $('.product_qty').val(qty);
+            // Call Modal Edit
+            $('#editModal').modal('show');
+        });
+
+        // get Delete Product
+        $('.btn-delete').on('click', function() {
+            // get data from button edit
+            const id = $(this).data('id');
+            // Set data to Form Edit
+            $('.productID').val(id);
+            // Call Modal Edit
+            $('#deleteModal').modal('show');
+        });
+
     });
 </script>
+<script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
 <script src="<?= base_url('assets/'); ?>js/jquery.min.js"></script>
 <script src="<?= base_url('assets/'); ?>js/jquery-migrate-3.0.1.min.js"></script>
 <script src="<?= base_url('assets/'); ?>js/popper.min.js"></script>

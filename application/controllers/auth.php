@@ -95,14 +95,17 @@ class Auth extends CI_Controller
                     if ($password['jenis_akun'] == 1) {
                         $dataSession = array(
                             'name_admin' => $user['nama'],
-                            'email' => $user['email']
+                            'email_admin' => $user['email']
                         );
                         $this->session->set_userdata($dataSession);
                         redirect('admin');
                     } else {
                         $dataSession = array(
+                            'id' => $user['id_akun'],
                             'name' => $user['nama'],
-                            'email' => $user['email']
+                            'email' => $user['email'],
+                            'address' => $user['alamat'],
+                            'phone' => $user['telepon']
                         );
                         $this->session->set_userdata($dataSession);
                         redirect('UserController');
