@@ -33,8 +33,8 @@
                 <td><?= $user->alamat ?></td>
                 <?php $index++; ?>
                 <td>
-                  <a href="<?= base_url('Admin/hapus/' . $user->id_akun) ?>" class="btn btn-danger btn-sm btn-delete">Delete</a>
-                  <a href="#" class="btn btn-success btn-sm btn-edit" data-nama="<?= $user->nama; ?>" data-email="<?= $user->email; ?>" data-password="<?= $user->password; ?>" data-alamat="<?= $user->alamat; ?>" data-telepon="<?= $user->telepon; ?>">Edit<a>
+                  <a href="#" class="btn btn-danger btn-sm btn-delete" data-id="<?= $user->id_akun; ?>">Delete</a>
+                  <a href="#" class="btn btn-success btn-sm btn-edit" data-id="<?= $user->id_akun; ?>" data-nama="<?= $user->nama; ?>" data-email="<?= $user->email; ?>" data-password="<?= $user->password; ?>" data-alamat="<?= $user->alamat; ?>" data-telepon="<?= $user->telepon; ?>">Edit<a>
                 </td>
               </tr>
             <?php } ?>
@@ -54,7 +54,7 @@
     <a class="scroll-to-top rounded" href="#page-top">
       <i class="fas fa-angle-up"></i>
     </a>
-    <form action="<?= base_url(); ?>KeranjangController/editKeranjang/">
+    <form action="<?= base_url(); ?>AkunController/UpdateAkun/" method="POST">
       <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
           <div class="modal-content">
@@ -68,6 +68,7 @@
               <div class="form-group">
                 <label>Nama</label>
                 <input type="text" class="form-control akun_nama" name="akun_nama" placeholder="Name">
+                <input type="hidden" class="form-control akun_id" name="akun_id" placeholder="Name">
               </div>
               <div class="form-group">
                 <label>Email</label>
@@ -96,6 +97,29 @@
         </div>
       </div>
     </form>
+    </form>
+    <form action="<?= base_url(); ?>AkunController/deleteAkun" ; method="POST" ?>
+      <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Hapus Akun</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <p>Anda yakin mau menghapus data ini?</p>
+              <input type="hidden" class="form-control akun_id" name="akun_id">
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-success"><span class="glyphicon glyphicon-floppy-disk"></span> Simpan</button>
+              <input type="submit" class="btn btn-danger" value="Hapus" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
     </body>
 
     </html>
@@ -115,7 +139,7 @@
           const alamat = $(this).data('alamat');
           const telepon = $(this).data('telepon');
           // Set data to Form Edit
-          $('.product_id').val(id);
+          $('.akun_id').val(id);
           $('.akun_email').val(email);
           $('.akun_password').val(password);
           $('.akun_telepon').val(telepon);
@@ -130,7 +154,7 @@
           // get data from button edit
           const id = $(this).data('id');
           // Set data to Form Edit
-          $('.productID').val(id);
+          $('.akun_id').val(id);
           // Call Modal Edit
           $('#deleteModal').modal('show');
         });

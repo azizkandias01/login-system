@@ -13,6 +13,7 @@
         <div class="container">
             <br><br><br><br>
             <h1 align="center">Riwayat Pemesanan</h1><br><br>
+            <?= $this->session->flashdata('message') ?>
 
             <div class="content table-responsive table-full-width">
                 <table class="table table-hover table-striped">
@@ -35,11 +36,10 @@
                                 <td>Rp.<?= number_format($riwayat['total_pembelian']); ?></td>
                                 <td><?= $riwayat['status']; ?></td>
                                 <td><?= $riwayat['total']; ?></td>
-                                <td><a href="Nota.jsp?id=<%=riwayat.getIdSewa()%>&idSewa=<%=riwayat.getIdSewa()%>&idOngkir=<%=riwayat.getIdOngkir()%>&idAlamat=<%=riwayat.getIdAlamat()%>&idPembayaran=<%=riwayat.getIdPembayaran()%>&tanggalPesan=<%=riwayat.getTanggalPesan()%>&tanggalKirim=<%=riwayat.getTanggalKirim()%>&tanggalTerimaPenyewa=<%=riwayat.getTanggalTerimaPenyewa()%>&tanggalTerimaAdmin=<%=riwayat.getTanggalTerimaAdmin()%>&tanggalKembali=<%=riwayat.getTanggalKembali()%>" class="btn btn-primary">Nota</a>
+                                <td><a href="<?= base_url(); ?>NotaController/Nota?id=<?= $riwayat['id_pembelian']; ?>&tanggal=<?= $riwayat['tanggal']; ?>&status=<?= $riwayat['status']; ?>&total=<?= $riwayat['total_pembelian']; ?>" class="btn btn-primary">Nota</a>
                                     <?php if ($riwayat['status'] == "Menunggu Pembayaran") { ?>
-                                        <a href="Pembayaran.jsp?id=<%=riwayat.getIdSewa()%>&subtotal=<%=riwayat.getHargaBayar()%>&idOngkir=<%=riwayat.getIdOngkir()%>" class="btn btn-success">Pembayaran</a>
-                                    <?php } else if ($riwayat['status'] == "Dikirim") { ?>
-                                        <a href="../TerimaPelanggan?id=<%=riwayat.getIdPembayaran()%>" class="btn btn-info">Terima</a>
+                                        <a href="<?= base_url(); ?>PembayaranController/Pembayaran?id=<?= $riwayat['id_pembelian']; ?>&total=<?= $riwayat['total_pembelian']; ?>" class="btn btn-danger">Pembayaran</a>
+                                    <?php } else if ($riwayat['status'] == "Dikirim") { ?> <a href="../TerimaPelanggan?id=<%=riwayat.getIdPembayaran()%>" class="btn btn-info">Terima</a>
                                     <?php } ?>
 
                                 </td>

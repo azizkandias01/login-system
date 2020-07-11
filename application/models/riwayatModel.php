@@ -27,4 +27,10 @@ class riwayatModel extends CI_Model
         $hasil = $this->db->query($query);
         return $hasil->result_array();
     }
+    public function _getDetail($id)
+    {
+        $query = "SELECT * FROM pupuk p, pembelian_pupuk2 pp WHERE p.id_pupuk=pp.id_pupuk AND pp.id_pembelian='" . $id . "'";
+        $hasil = $this->db->query($query)->result_array();
+        return $hasil;
+    }
 }

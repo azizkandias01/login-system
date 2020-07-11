@@ -22,6 +22,48 @@
    </div>
  </div>
  <!-- Bootstrap core JavaScript-->
+
+ </html>
+ <script src="<?= base_url("/assets"); ?>/js/jquery-3.2.1.min.js"></script>
+ <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+ <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js"></script>
+ <script>
+   $(document).ready(function() {
+
+     // get Edit Product
+     $('.btn-edit').on('click', function() {
+       // get data from button edit
+       const id = $(this).data('id');
+       const nama = $(this).data('nama');
+       const jumlah = $(this).data('jumlah');
+       const harga = $(this).data('harga');
+       const foto = $(this).data('foto');
+       // Set data to Form Edit
+       $('.pupuk_id').val(id);
+       $('.pupuk_nama').val(nama);
+       $('.pupuk_jumlah').val(jumlah);
+       $('.pupuk_harga').val(harga);
+       $('.pupuk_foto').attr("src", foto);
+       // Call Modal Edit
+       $('#editModal').modal('show');
+     });
+
+     // get Add Product
+     $('.btn-tambah').on('click', function() {
+       // get data from button edit
+       // Call Modal Edit
+       $('#tambahModal').modal('show');
+     });
+     // get Delete Product
+     $('.btn-delete').on('click', function() {
+       // get data from button edit
+       const id = $(this).data('id');
+       // Call Modal Edit
+       $('.pupuk_id').val(id);
+       $('#deleteModal').modal('show');
+     });
+   });
+ </script>
  <script src="<?= base_url('assets/'); ?>vendor/jquery/jquery.min.js"></script>
  <script src="<?= base_url('assets/'); ?>vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 

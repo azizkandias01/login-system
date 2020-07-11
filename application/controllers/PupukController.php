@@ -21,7 +21,6 @@ class PupukController extends CI_Controller
             $this->load->view('home/pupuk', $result);
             $this->load->view('templates/index_footer');
         }
-        print_r($_SESSION);
     }
     public function addPupuk()
     {

@@ -20,62 +20,6 @@ class Auth extends CI_Controller
         $this->load->view('auth/login');
         $this->load->view('templates/auth_footer');
     }
-
-    public function registration()
-    {
-        $data['title'] = "User Registration";
-
-        $this->form_validation->set_rules('name', 'Name', 'required|trim');
-        $this->form_validation->set_rules('phone', 'Phone', 'required|trim');
-        $this->form_validation->set_rules('address', 'Address', 'required');
-        $this->form_validation->set_rules('city', 'City', 'required');
-        $this->form_validation->set_rules('zip', 'Zip', 'required');
-
-        $this->form_validation->set_rules(
-            'email',
-            'Email',
-            'required|trim|valid_email|is_unique[akun.email]',
-            [
-                'is_unique' => "This email Has already registered"
-            ]
-        );
-        $this->form_validation->set_rules(
-            'password1',
-            'Password1',
-            'required|trim|min_length[6]|matches[password2]',
-            [
-                'matches' => "password don't match!",
-                'min_length' => "password too short!"
-            ]
-        );
-        $this->form_validation->set_rules('password2', 'Password2', 'required|trim|matches[password1]');
-
-
-        if ($this->form_validation->run() == false) {
-
-            $this->load->view('templates/auth_header', $data);
-            $this->load->view('auth/registration');
-            $this->load->view('templates/auth_footer');
-        } else {
-            $alamat = $this->input->post('address') .
-                " " . $this->input->post('city') .
-                " " . $this->input->post('state') .
-                " " . $this->input->post('zip');
-            $data = [
-                'nama' => htmlspecialchars($this->input->post('name', true)),
-                'email' => htmlspecialchars($this->input->post('email', true)),
-                'password' => $this->input->post('password1'),
-                'alamat' => $alamat,
-                'telepon' => $this->input->post('phone'),
-                'jenis_akun' => 3
-            ];
-
-            $this->account->tambah($data, 'akun');
-            $this->session->set_flashdata('message', '<div class="alert alert-success">
-            your registration account has been created!</div>');
-            redirect('/', 'refresh');
-        }
-    }
     public function login()
     {
 

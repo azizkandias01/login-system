@@ -22,6 +22,7 @@
                             <th colspan="2">Action</th>
                         </tr>
                     </thead>
+
                     <tbody><?php $index = 1; ?>
                         <?php foreach ($data as $pupuk) { ?>
                             <tr>
@@ -151,66 +152,3 @@
         </div>
         </form>
     </div>
-
-    </html>
-    <script src="<?= base_url("/assets"); ?>/js/jquery-3.2.1.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js"></script>
-    <script>
-        $(document).ready(function() {
-
-            // get Edit Product
-            $('.btn-edit').on('click', function() {
-                // get data from button edit
-                const id = $(this).data('id');
-                const nama = $(this).data('nama');
-                const jumlah = $(this).data('jumlah');
-                const harga = $(this).data('harga');
-                const foto = $(this).data('foto');
-                // Set data to Form Edit
-                $('.pupuk_id').val(id);
-                $('.pupuk_nama').val(nama);
-                $('.pupuk_jumlah').val(jumlah);
-                $('.pupuk_harga').val(harga);
-                $('.pupuk_foto').attr("src", foto);
-                // Call Modal Edit
-                $('#editModal').modal('show');
-            });
-
-            // get Add Product
-            $('.btn-tambah').on('click', function() {
-                // get data from button edit
-                // Call Modal Edit
-                $('#tambahModal').modal('show');
-            });
-            // get Delete Product
-            $('.btn-delete').on('click', function() {
-                // get data from button edit
-                const id = $(this).data('id');
-                // Call Modal Edit
-                $('.pupuk_id').val(id);
-                $('#deleteModal').modal('show');
-            });
-        });
-    </script>
-    <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
-    <script src="<?= base_url('assets/'); ?>js/jquery.min.js"></script>
-    <script src="<?= base_url('assets/'); ?>js/jquery-migrate-3.0.1.min.js"></script>
-    <script src="<?= base_url('assets/'); ?>js/popper.min.js"></script>
-    <script src="<?= base_url('assets/'); ?>js/bootstrap.min.js"></script>
-    <script src="<?= base_url('assets/'); ?>js/jquery.easing.1.3.js"></script>
-    <script src="<?= base_url('assets/'); ?>js/jquery.waypoints.min.js"></script>
-    <script src="<?= base_url('assets/'); ?>js/jquery.stellar.min.js"></script>
-    <script src="<?= base_url('assets/'); ?>js/owl.carousel.min.js"></script>
-    <script src="<?= base_url('assets/'); ?>js/jquery.magnific-popup.min.js"></script>
-    <script src="<?= base_url('assets/'); ?>js/aos.js"></script>
-    <script src="<?= base_url('assets/'); ?>js/jquery.animateNumber.min.js"></script>
-    <script src="<?= base_url('assets/'); ?>js/bootstrap-datepicker.js"></script>
-    <script src="<?= base_url('assets/'); ?>js/jquery.timepicker.min.js"></script>
-    <script src="<?= base_url('assets/'); ?>js/scrollax.min.js"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
-    <script src="<?= base_url('assets/'); ?>js/google-map.js"></script>
-    <script src="<?= base_url('assets/'); ?>js/main.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
