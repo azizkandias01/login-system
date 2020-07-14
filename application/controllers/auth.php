@@ -15,10 +15,16 @@ class Auth extends CI_Controller
     public function index()
     {
 
-        $data['title'] = "Login";
-        $this->load->view('templates/auth_header', $data);
-        $this->load->view('auth/login');
-        $this->load->view('templates/auth_footer');
+        if (isset($_SESSION['name'])) {
+            redirect('UserController');
+        } else if (isset($_SESSION['name_admin'])) {
+            redirect('DashboardController');
+        } else {
+            $data['title'] = "Login";
+            $this->load->view('templates/auth_header', $data);
+            $this->load->view('auth/login');
+            $this->load->view('templates/auth_footer');
+        }
     }
     public function login()
     {
@@ -42,7 +48,7 @@ class Auth extends CI_Controller
                             'email_admin' => $user['email']
                         );
                         $this->session->set_userdata($dataSession);
-                        redirect('admin');
+                        redirect('DashboardController');
                     } else {
                         $dataSession = array(
                             'id' => $user['id_akun'],
@@ -66,7 +72,8 @@ class Auth extends CI_Controller
     }
     public function logout()
     {
-        $this->session->sess_destroy();
+        unset($_SESSION['name_admin'],
+        $_SESSION['email_admin']);
         redirect(base_url('/'));
     }
 }

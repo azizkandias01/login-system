@@ -6,6 +6,7 @@
             <div class="row no-gutters slider-text js-fullheight align-items-end justify-content-center">
                 <div class="col-md-9 ftco-animate pb-5 mb-5 text-center">
                     <form name='autoSumForm'>
+                        <?= $this->session->flashdata('message') ?>
                         <table id="table_id" class="table table-hover table-striped display">
                             <thead>
                                 <tr>
@@ -28,8 +29,8 @@
                                         <td>Rp.<?= number_format($keranjang['price']); ?></td>
                                         <td><?= $keranjang['qty']; ?></td>
                                         <td>Rp.<?= number_format($keranjang['price'] * $keranjang['qty']); ?></td>
-                                        <td><a href="<?= base_url(); ?>KeranjangController/hapusKeranjang/<?= $keranjang['rowid']; ?>" class="btn btn-danger">Hapus</a><span />
-                                            <a href="#" class="btn btn-success btn-sm btn-edit" data-id="<?= $keranjang['rowid']; ?>" data-qty="<?= $keranjang['qty']; ?>" ?>Edit<a>
+                                        <td><a href="<?= base_url(); ?>KeranjangController/hapusKeranjang/<?= $keranjang['rowid']; ?>" class="btn btn-danger btn-sm">Hapus</a><span />
+                                            <a href="#" class="btn btn-success btn-sm btn-edit" data-id="<?= $keranjang['rowid']; ?>" data-qty="<?= $keranjang['qty']; ?>" data-produk_pupuk="<?= $keranjang['id']; ?>" ?>Edit<a>
                                         </td>
                                     </tr>
                                 <?php $subtotal += $keranjang['price'] * $keranjang['qty'];
@@ -71,6 +72,7 @@
                         <div class="form-group">
                             <label>Product id</label>
                             <input type="text" class="form-control product_id" name="product_id" placeholder="Product Name">
+                            <input type="hidden" class="form-control product_pupuk" name="product_pupuk" placeholder="Product Name">
                         </div>
 
                         <div class="form-group">
@@ -105,9 +107,11 @@
             // get data from button edit
             const id = $(this).data('id');
             const qty = $(this).data('qty');
+            const pupuk_id = $(this).data('produk_pupuk');
             // Set data to Form Edit
             $('.product_id').val(id);
             $('.product_qty').val(qty);
+            $('.product_pupuk').val(pupuk_id);
             // Call Modal Edit
             $('#editModal').modal('show');
         });

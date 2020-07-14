@@ -41,7 +41,7 @@
 
       <!-- Nav Item - Dashboard -->
       <li class="nav-item active">
-        <a class="nav-link" href="<?= base_url('/Admin/index') ?>">
+        <a class="nav-link" href="<?= base_url('/DashboardController/index') ?>">
           <i class=" fas fa-fw fa-tachometer-alt"></i>
           <span>Dashboard</span></a>
       </li>
@@ -56,7 +56,7 @@
 
       <!-- Nav Item - Pages Collapse Menu -->
       <li class="nav-item">
-        <a class="nav-link collapsed" href="<?= base_url('/Admin/akun') ?>">
+        <a class="nav-link collapsed" href="<?= base_url('/AkunController/getAlldata') ?>">
           <i class="fas fa-address-book"></i>
           <span>Akun</span>
         </a>
@@ -77,15 +77,9 @@
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link collapsed" href="#">
-          <i class="fa fa-history"></i>
-          <span>Daftar Transaksi</span>
-        </a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="#">
-          <i class="fa fa-list"></i>
-          <span>Daftar Pupuk</span>
+        <a class="nav-link collapsed" href="<?= base_url('/TransaksiController/daftarTransaksi') ?>" />
+        <i class=" fa fa-history"></i>
+        <span>Daftar Transaksi</span>
         </a>
       </li>
       <!-- Divider -->
@@ -258,7 +252,7 @@
             <!-- Nav Item - User Information -->
             <li class="nav-item dropdown no-arrow">
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?= $_SESSION['name_admin'] ?></span>
+                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Admin</span>
                 <img class="img-profile rounded-circle" src="https://source.unsplash.com/QAB-WJcbgJk/60x60">
               </a>
               <!-- Dropdown - User Information -->

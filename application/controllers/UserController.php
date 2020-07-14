@@ -25,7 +25,11 @@ class UserController extends CI_Controller
     }
     public function Logout()
     {
-        $this->session->sess_destroy();
+        unset($_SESSION['id'],
+        $_SESSION['name'],
+        $_SESSION['email'],
+        $_SESSION['address'],
+        $_SESSION['phone']);
         redirect(base_url('/'));
     }
     public function coba()

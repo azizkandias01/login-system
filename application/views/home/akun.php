@@ -33,8 +33,8 @@
                 <td><?= $user->alamat ?></td>
                 <?php $index++; ?>
                 <td>
-                  <a href="#" class="btn btn-danger btn-sm btn-delete" data-id="<?= $user->id_akun; ?>">Delete</a>
-                  <a href="#" class="btn btn-success btn-sm btn-edit" data-id="<?= $user->id_akun; ?>" data-nama="<?= $user->nama; ?>" data-email="<?= $user->email; ?>" data-password="<?= $user->password; ?>" data-alamat="<?= $user->alamat; ?>" data-telepon="<?= $user->telepon; ?>">Edit<a>
+                  <a href="#" class="badge badge-danger btn-sm btn-delete" data-id="<?= $user->id_akun; ?>">Delete</a>
+                  <a href="#" class="badge badge-success btn-sm btn-edit" data-id="<?= $user->id_akun; ?>" data-nama="<?= $user->nama; ?>" data-email="<?= $user->email; ?>" data-password="<?= $user->password; ?>" data-alamat="<?= $user->alamat; ?>" data-telepon="<?= $user->telepon; ?>">Edit<a>
                 </td>
               </tr>
             <?php } ?>

@@ -55,11 +55,13 @@ class pupukModel extends CI_Model
         $nama = $this->input->post('pupuk_nama');
         $harga = $this->input->post('pupuk_harga');
         $jumlah = $this->input->post('pupuk_jumlah');
+        $deskripsi = $this->input->post('pupuk_deskripsi');
         $data = array(
             'nama_pupuk' => $nama,
             'harga_pupuk' => $harga,
             'jumlah_pupuk' => $jumlah,
-            'foto_pupuk' => $this->do_upload()
+            'foto_pupuk' => $this->do_upload(),
+            'deskripsi' => $deskripsi
         );
         $this->db->insert('pupuk', $data);
     }
@@ -79,11 +81,13 @@ class pupukModel extends CI_Model
             $nama = $this->input->post('pupuk_nama');
             $harga = $this->input->post('pupuk_harga');
             $jumlah = $this->input->post('pupuk_jumlah');
+            $deskripsi = $this->input->post('pupuk_deskripsi');
             $data = array(
                 'nama_pupuk' => $nama,
                 'harga_pupuk' => $harga,
                 'jumlah_pupuk' => $jumlah,
-                'foto_pupuk' => $this->do_upload()
+                'foto_pupuk' => $this->do_upload(),
+                'deskripsi' => $deskripsi
             );
             $this->db->where('id_pupuk', $id);
             $this->db->update('pupuk', $data);
@@ -92,10 +96,12 @@ class pupukModel extends CI_Model
             $nama = $this->input->post('pupuk_nama');
             $harga = $this->input->post('pupuk_harga');
             $jumlah = $this->input->post('pupuk_jumlah');
+            $deskripsi = $this->input->post('pupuk_deskripsi');
             $data = array(
                 'nama_pupuk' => $nama,
                 'harga_pupuk' => $harga,
-                'jumlah_pupuk' => $jumlah
+                'jumlah_pupuk' => $jumlah,
+                'deskripsi' => $deskripsi
             );
             $this->db->where('id_pupuk', $id);
             $this->db->update('pupuk', $data);

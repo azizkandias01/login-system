@@ -38,11 +38,13 @@
        const jumlah = $(this).data('jumlah');
        const harga = $(this).data('harga');
        const foto = $(this).data('foto');
+       const deskripsi = $(this).data('deskripsi');
        // Set data to Form Edit
        $('.pupuk_id').val(id);
        $('.pupuk_nama').val(nama);
        $('.pupuk_jumlah').val(jumlah);
        $('.pupuk_harga').val(harga);
+       $('.pupuk_deskripsi').val(deskripsi);
        $('.pupuk_foto').attr("src", foto);
        // Call Modal Edit
        $('#editModal').modal('show');
@@ -61,6 +63,30 @@
        // Call Modal Edit
        $('.pupuk_id').val(id);
        $('#deleteModal').modal('show');
+     });
+     $('.btn-detail').on('click', function() {
+       // get data from button edit
+       const detail = $(this).data('detail');
+       // Set data to Form Edit
+       $('.detail').val(detail);
+       // Call Modal Edit
+       $('#detailModal').modal('show');
+     });
+     $('.btn-konfirmasi').on('click', function() {
+       // get data from button edit
+       const konfirmasi = $(this).data('konfirmasi');
+       // Set data to Form Edit
+       $('.konfirmasi').val(konfirmasi);
+       // Call Modal Edit
+       $('#konfirmasi').modal('show');
+     });
+     $('.btn-tolak').on('click', function() {
+       // get data from button edit
+       const konfirmasi = $(this).data('tolak');
+       // Set data to Form Edit
+       $('.tolak').val(konfirmasi);
+       // Call Modal Edit
+       $('#tolak').modal('show');
      });
    });
  </script>

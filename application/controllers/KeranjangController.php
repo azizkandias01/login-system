@@ -3,6 +3,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class KeranjangController extends CI_Controller
 {
+
     public function __construct()
     {
         parent::__construct();
@@ -39,6 +40,7 @@ class KeranjangController extends CI_Controller
     }
     public function hapusKeranjang($id)
     {
+
         $data = array(
             'rowid' => $id,
             'qty' => 0
@@ -48,14 +50,21 @@ class KeranjangController extends CI_Controller
     }
     public function editKeranjang()
     {
+        $idpupuk = $this->input->get('product_pupuk');
         $id = $this->input->get('product_id');
+        $dataPupuk = $this->pupukModel->getPupuk($idpupuk);
         $qty = $this->input->get('product_qty');
-        $data = array(
-            'rowid' => $id,
-            'qty' => $qty
-        );
-        $this->cart->update($data);
-        redirect("KeranjangController/Index");
+        if ($dataPupuk[0]['jumlah_pupuk'] < $qty) {
+            $this->session->set_flashdata('message', '<div class="alert alert-danger">Barang Yang anda pilih stoknya terbatas!!!</div>');
+            redirect("KeranjangController/Index");
+        } else {
+            $data = array(
+                'rowid' => $id,
+                'qty' => $qty
+            );
+            $this->cart->update($data);
+            redirect("KeranjangController/Index");
+        }
     }
     public function hapusSemua()
     {

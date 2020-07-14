@@ -23,51 +23,51 @@
                             <h3 class="mb-0"><?= $product->nama_pupuk; ?></a></h3>
                             <span class="location d-inline-block mb-3">Stock : <?= $product->jumlah_pupuk; ?> Kg</span>
                             <ul class="property_list">
-                                <a href="detailPenari.jsp?id=<%=tarian.getIdtari()%>&status=detail"><button class="btn btn-primary">Detail</button></a>
-                                <!-- <a href="#" class="my_link btn btn-default btn-rounded" data-toggle="modal" data-val="<?= $product->id_pupuk; ?>" data-target="#orangeModalSubscription">Pesan</a> -->
-                                <a href="<?= base_url(); ?>keranjangController/tambahKeranjang/<?= $product->id_pupuk; ?>" class="btn btn-success">Pesan</a>
+                                <a href="##" class="btn btn-primary btn-sm btn-delete" data-id="<?= $product->deskripsi; ?>">Detail</a>
+                                <?php if ($product->jumlah_pupuk >= 1) { ?>
+                                    <a href="<?= base_url(); ?>keranjangController/tambahKeranjang/<?= $product->id_pupuk; ?>" class="btn btn-success">Pesan</a>
+                                <?php } else { ?>
+                                    <button class="btn btn-danger">Pupuk Kosong</button>
+                                <?php } ?>
                             </ul>
                         </div>
                     </div>
                 </div>
             <?php } ?>
-            <div class="modal fade" id="orangeModalSubscription" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                <div class="modal-dialog modal-notify modal-warning" role="document">
-                    <!--Content-->
-                    <div class="modal-content">
-                        <!--Header-->
-                        <div class="modal-header text-center">
-                            <h4 class="modal-title white-text w-100 font-weight-bold py-2">Subscribe</h4>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true" class="white-text">&times;</span>
-                            </button>
-                        </div>
-                        <!--Body-->
-                        <div class="modal-body">
-                            <!-- <div class="md-form mb-5">
-                                <i class="fas fa-user prefix grey-text"></i>
-                                <input type="text" id="form3" class="form-control validate">
-                                <label data-error="wrong" data-success="right" for="form3">Your name</label>
+            <form method="POST" ?>
+                <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Deskripsi Produk</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
                             </div>
-                            <h1>
-
-                            </h1>
-
-                            <div class="md-form">
-                                <i class="fas fa-envelope prefix grey-text"></i>
-                                <input type="email" id="form2" class="form-control validate">
-                                <label data-error="wrong" data-success="right" for="form2">Your email</label>
-                            </div> -->
-                        </div>
-
-                        <!--Footer-->
-                        <div class="modal-footer justify-content-center">
-                            <a type="button" class="btn btn-outline-warning waves-effect">Send <i class="fas fa-paper-plane-o ml-1"></i></a>
+                            <div class="modal-body">
+                                <textarea class="form-control akun_id" name="akun_id" rows="20" cols="100"></textarea>
+                            </div>
                         </div>
                     </div>
-                    <!--/.Content-->
                 </div>
-            </div>
+            </form>
         </div>
     </div>
+    </div>
 </section>
+<script src="<?= base_url("/assets"); ?>/js/jquery-3.2.1.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js"></script>
+<script>
+    $(document).ready(function() {
+        // get Delete Product
+        $('.btn-delete').on('click', function() {
+            // get data from button edit
+            const id = $(this).data('id');
+            // Set data to Form Edit
+            $('.akun_id').val(id);
+            // Call Modal Edit
+            $('#deleteModal').modal('show');
+        });
+    });
+</script>

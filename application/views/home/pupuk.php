@@ -19,6 +19,7 @@
                             <th>Jumlah</th>
                             <th>Harga</th>
                             <th>Foto</th>
+                            <th>Deskripsi</th>
                             <th colspan="2">Action</th>
                         </tr>
                     </thead>
@@ -33,10 +34,11 @@
                                 <td>
                                     <img src="<?= base_url('assets/'); ?>img/pupuk/<?= $pupuk->foto_pupuk; ?>" width="100" height="100" />
                                 </td>
+                                <td> <a href="##" class="btn btn-primary btn-sm btn-detail" data-detail="<?= $pupuk->deskripsi; ?>">Detail</a></td>
                                 <?php $index++; ?>
                                 <td>
                                     <a href="#" class="btn btn-danger btn-sm btn-delete" data-id="<?= $pupuk->id_pupuk; ?>">Delete</a>
-                                    <a href="#" class="btn btn-success btn-sm btn-edit" data-id="<?= $pupuk->id_pupuk; ?>" data-nama="<?= $pupuk->nama_pupuk; ?>" data-jumlah="<?= $pupuk->jumlah_pupuk; ?>" data-harga="<?= $pupuk->harga_pupuk; ?>" data-foto="<?= base_url('assets/'); ?>img/pupuk/<?= $pupuk->foto_pupuk; ?>">Edit<a>
+                                    <a href="#" class="btn btn-success btn-sm btn-edit" data-id="<?= $pupuk->id_pupuk; ?>" data-nama="<?= $pupuk->nama_pupuk; ?>" data-jumlah="<?= $pupuk->jumlah_pupuk; ?>" data-harga="<?= $pupuk->harga_pupuk; ?>" data-foto="<?= base_url('assets/'); ?>img/pupuk/<?= $pupuk->foto_pupuk; ?>" data-deskripsi="<?= $pupuk->deskripsi; ?>">Edit<a>
                                 </td>
                             </tr>
                         <?php } ?>
@@ -79,6 +81,10 @@
                             <label>Harga</label>
                             <input type="text" class="form-control pupuk_harga" name="pupuk_harga" placeholder="Harga">
                         </div>
+                        <div class="form-group">
+                            <label>Deskripsi</label>
+                            <textarea class="form-control pupuk_deskripsi" name="pupuk_deskripsi" rows="20" cols="100"></textarea>
+                        </div>
                         <br>
                         <img class="pupuk_foto" name="pupuk_foto" width="100" height="100"><br>
                         <input type="file" name="pupuk_foto" />
@@ -116,6 +122,10 @@
                             <input type="text" class="form-control" name="pupuk_jumlah" placeholder="Nama Pupuk">
                         </div>
                         <div class="form-group">
+                            <label>Deskripsi</label>
+                            <input type="text" class="form-control" name="pupuk_deskripsi" placeholder="deskripsi Pupuk">
+                        </div>
+                        <div class="form-group">
                             <label>Foto</label>
                             <input type="file" class="form-control" name="pupuk_foto" placeholder="foto Pupuk">
                         </div>
@@ -150,5 +160,22 @@
                 </div>
             </div>
         </div>
+        </form>
+        <form method="POST" ?>
+            <div class="modal fade" id="detailModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Deskripsi Produk</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <textarea class="form-control detail" name="detail" rows="20" cols="100"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </form>
     </div>

@@ -37,6 +37,7 @@ class pembayaranModel extends CI_Model
             'id_pembelian' => $id,
             'jumlah' => $jumlah,
             'nama' => $nama,
+            'bank' => $bank,
             'bukti' => $this->do_upload(),
             'tanggal' => $tanggal
         );

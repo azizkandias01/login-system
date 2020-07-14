@@ -1,4 +1,7 @@
 <?php
+
+use phpDocumentor\Reflection\Types\False_;
+
 defined('BASEPATH') or exit('No direct script access allowed');
 class checkoutModel extends CI_Model
 {
@@ -36,6 +39,9 @@ class checkoutModel extends CI_Model
                 'jumlah' => $keranjang['qty']
             );
             $this->db->insert('pembelian_pupuk2', $data);
+            $this->db->set('jumlah_pupuk', 'jumlah_pupuk-' . $keranjang['qty'] . '', False);
+            $this->db->where('id_pupuk', $keranjang['id']);
+            $this->db->update('pupuk');
         }
     }
     private function getMaxId()

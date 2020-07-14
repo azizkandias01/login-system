@@ -1,6 +1,6 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
-class riwayatModel extends CI_Model
+class transaksiModel extends CI_Model
 {
     public function __construct()
     {
@@ -11,19 +11,18 @@ class riwayatModel extends CI_Model
     }
     public function getAll()
     {
-        $data = $this->db->query('select * from pembelian2');
+        $data = $this->db->query('select * from pembelian2 p, akun a where p.id_pelanggan=a.id_akun order by status');
         return $data->result();
     }
     public function getPembelian($id)
     {
         $this->db->select("*");
         $this->db->from("pembelian2");
-        $this->db->where("id_pelanggan", $id);
         return $data = $this->db->get()->result_array(); //mengembalikan nilai berupa array
     }
-    public function getTotalItems($id)
+    public function getTotalItems()
     {
-        $query = "SELECT p.id_pembelian,p.id_pelanggan,p.id_pembayaran,p.status,p.total_pembelian,p.alamat,p.tanggal, COUNT(*) as total FROM pembelian2 p, pembelian_pupuk2 pp where p.id_pembelian=pp.id_pembelian AND p.id_pelanggan = '" . $id . "' GROUP BY p.id_pembelian";
+        $query = "SELECT p.id_pembelian,p.id_pelanggan,p.id_pembayaran,p.status,p.total_pembelian,p.alamat,p.tanggal, COUNT(*) as total FROM pembelian2 p, pembelian_pupuk2 pp where p.id_pembelian=pp.id_pembelian";
         $hasil = $this->db->query($query);
         return $hasil->result_array();
     }
@@ -33,16 +32,19 @@ class riwayatModel extends CI_Model
         $hasil = $this->db->query($query)->result_array();
         return $hasil;
     }
-    public function getPembayaran($id)
+    public function konfirmasiPembayaran($id, $data)
     {
-        $query = "select * from pembayaran where id_pembayaran=" . $id;
-        $hasil = $this->db->query($query)->result_array();
-        return $hasil;
+        $this->db->where('id_pembelian', $id);
+        $this->db->update('pembelian2', $data);
     }
-    public function getPelanggan($id)
+    public function tolakPembayaran($id, $data)
     {
-        $query = "select * from akun where id_akun=" . $id;
-        $hasil = $this->db->query($query)->result_array();
-        return $hasil;
+        $this->db->where('id_pembelian', $id);
+        $this->db->update('pembelian2', $data);
+    }
+    public function transaksiKonfirmasi($id, $data)
+    {
+        $this->db->where('id_pembelian', $id);
+        $this->db->update('pembelian2', $data);
     }
 }
