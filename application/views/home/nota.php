@@ -70,7 +70,8 @@
                             <tr>
                         </tbody>
                     </table>
-                    <?php if ($data['status'] == "Menunggu Konfirmasi") { ?>
+                    <?php $foto = null;
+                    if ($data['status'] == "Menunggu Konfirmasi") { ?>
                         <div class="col-md-10"><strong>
                                 <h1>Data Pembayaran</h1><br>
                         </div>
@@ -101,7 +102,7 @@
                         <?php $foto = base_url('assets/') . "img/pembayaran/" . $pembayaran['bukti']; ?><br><br>
                         <img src="<?= $foto; ?>" align="center"><br>
                     <?php } ?>
-                </div><br><br><br>
+                </div>
                 <div class="container">
                     <div class="row">
                         <div class="col-md-7">
@@ -110,21 +111,29 @@
                                     <p> Belum Melakukan Konfirmasi Pembayaran
                                     </p>
                                 </div>
-                            <?php } else if ($data['status'] == "Menunggu Konfirmasi") { ?>
-                            <?php }
-                            else if ($data['status'] == "Pesanan Dikirimkan!") { ?>
-                                <div class="alert alert-success">
-                                    <p> Pesanan Telah Dikirim
-                                    </p>
+                            <?php } else if ($data['status'] == "Pesanan Ditolak") { ?>
+                                <div class="alert alert-danger">
+                                    <?php $pembayaran = $data3[0] ?>
+                                    <p> Pesanan ditolak
                                 </div>
-                            <?php }
-                            else { ?>
+                                </p><?php $foto = base_url('assets/') . "img/pembayaran/" . $pembayaran['bukti']; ?><br><br>
+                                <img src="<?= $foto; ?>" align="center"><br>
+                            <?php } else if ($data['status'] == "Pesanan Dikirimkan!") { ?>
+                                <?php $pembayaran = $data3[0] ?>
                                 <div class="alert alert-success">
+                                    <p> Pesanan Telah Dikirim </p>
+                                </div>
+                                <?php $foto = base_url('assets/') . "img/pembayaran/" . $pembayaran['bukti']; ?><br><br>
+                                <img src="<?= $foto; ?>" align="center"><br>
+                            <?php } else { ?>
+                                <div class="alert alert-success">
+                                    <?php $pembayaran = $data3[0] ?>
                                     <p> Pesanan Selesai
-                                    </p>
                                 </div>
+                                </p><?php $foto = base_url('assets/') . "img/pembayaran/" . $pembayaran['bukti']; ?><br><br>
+                                <img src="<?= $foto; ?>" align="center"><br>
                             <?php }  ?>
-                        </div><br><br><br><br>
+                        </div><br><br>
                     </div>
                 </div>
                 <br>

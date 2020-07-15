@@ -49,13 +49,21 @@ class Auth extends CI_Controller
                         );
                         $this->session->set_userdata($dataSession);
                         redirect('DashboardController');
+                    } else if ($password['jenis_akun'] == 2) {
+                        $dataSession = array(
+                            'name_pengurus' => $user['nama'],
+                            'email_pengurus' => $user['email']
+                        );
+                        $this->session->set_userdata($dataSession);
+                        redirect('PengurusController');
                     } else {
                         $dataSession = array(
                             'id' => $user['id_akun'],
                             'name' => $user['nama'],
                             'email' => $user['email'],
                             'address' => $user['alamat'],
-                            'phone' => $user['telepon']
+                            'phone' => $user['telepon'],
+                            'password' => $user['password']
                         );
                         $this->session->set_userdata($dataSession);
                         redirect('UserController');

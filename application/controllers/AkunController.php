@@ -21,6 +21,18 @@ class AkunController extends CI_Controller
         $this->load->helper('form');
         $this->load->helper('url');
     }
+    public function Profile()
+    {
+        $id = $_SESSION['id'];
+        $data['data'] = json_decode(
+            file_get_contents('http://127.0.0.1/api/rest_ci/akun?id_akun=' . $id, TRUE)
+        );
+        $this->load->view('templates/pelanggan_head');
+        $this->load->view('templates/pelanggan_header');
+        $this->load->view('pelanggan/pelanggan_profile', $data);
+        $this->load->view('templates/pelanggan_footer');
+        $this->load->view('templates/pelanggan_loader');
+    }
     public function getAlldata()
     {
         $data['data'] = json_decode(
@@ -64,6 +76,33 @@ class AkunController extends CI_Controller
         $result = json_decode($response->getBody()->getContents(), true);
         $this->session->set_flashdata('message', '<div class="alert alert-success">Akun Berhasil Diupdate!!</div>');
         redirect('AkunController/getAlldata');
+    }
+    public function updateAkun2()
+    {
+        $id = $this->input->post('akun_id');
+        $nama = $this->input->post('akun_nama');
+        $password = $this->input->post('akun_password');
+        $alamat = $this->input->post('akun_alamat');
+        $email = $this->input->post('akun_email');
+        $telepon = $this->input->post('akun_telepon');
+        $response = $this->_client->request('PUT', 'http://127.0.0.1/api/rest_ci/akun/index_put', [
+            'form_params' => [
+                'id_akun' => $id,
+                'nama'          => $nama,
+                'email'    => $email,
+                'password'    => $password,
+                'alamat'    => $alamat,
+                'telepon'    => $telepon
+            ]
+        ]);
+        $result = json_decode($response->getBody()->getContents(), true);
+        $_SESSION['name'] = $result['nama'];
+        $_SESSION['email'] = $result['email'];
+        $_SESSION['password'] = $result['password'];
+        $_SESSION['address'] = $result['alamat'];
+        $_SESSION['phone'] = $result['telepon'];
+        $this->session->set_flashdata('message', '<div class="alert alert-success">Akun Berhasil Diupdate!!</div>');
+        redirect('AkunController/Profile');
     }
     public function Registration()
     {

@@ -21,4 +21,11 @@ class RiwayatController extends CI_Controller
         $this->load->view('templates/pelanggan_footer');
         $this->load->view('templates/pelanggan_loader');
     }
+    public function deleteHistory()
+    {
+        $id_pembelian = $this->input->post('hapus');
+        $data = array('is_deleted' => "1");
+        $this->riwayatModel->delete($id_pembelian, $data);
+        redirect("RiwayatController/index");
+    }
 }

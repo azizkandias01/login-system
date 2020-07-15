@@ -40,6 +40,7 @@ class TransaksiController extends CI_Controller
         $id_pembelian = $this->input->post('konfirmasi');
         $data = array('status' => "Pesanan Dikirimkan!");
         $this->transaksiModel->konfirmasiPembayaran($id_pembelian, $data);
+        $this->session->set_flashdata('message', '<div class="alert alert-success">Pesanan Dikonfirmasi!</div>');
         redirect("TransaksiController/daftarTransaksi");
     }
     public function konfirmasiDiterima()
@@ -54,6 +55,14 @@ class TransaksiController extends CI_Controller
         $id_pembelian = $this->input->post('tolak');
         $data = array('status' => "Pesanan Ditolak");
         $this->transaksiModel->tolakPembayaran($id_pembelian, $data);
+        $this->session->set_flashdata('message', '<div class="alert alert-danger">Pesanan Ditolak!</div>');
+        redirect("TransaksiController/daftarTransaksi");
+    }
+    public function hapusTransaksi()
+    {
+        $id_pembelian = $this->input->post('hapus');
+        $this->transaksiModel->hapusTransaksi($id_pembelian);
+        $this->session->set_flashdata('message', '<div class="alert alert-danger">Transaksi Berhasil Dihapus!!!</div>');
         redirect("TransaksiController/daftarTransaksi");
     }
 }

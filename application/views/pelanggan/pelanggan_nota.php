@@ -84,12 +84,22 @@
                         <p> Bukti Pembayaran Telah Diterima, Pesanan Sedang Menunggu Konfirmasi!
                         </p>
                     </div>
-                <?php } else { ?>
+                <?php } else if ($data['status'] == "Pesanan Dikirimkan!") { ?>
                     <div class="alert alert-success">
                         <p> Pesanan Telah Dikirim, Anda Telah Menerima Pesanan?
                         </p>
                     </div>
-                <?php }  ?>
+                <?php } else if ($data['status'] == "Pesanan Ditolak") { ?>
+                    <div class="alert alert-danger">
+                        <p> Pesanan Anda Ditolak!
+                        </p>
+                    </div>
+                <?php } else { ?>
+                    <div class="alert alert-success">
+                        <p> Pesanan Selesai
+                        </p>
+                    </div>
+                <?php } ?>
             </div><br><br><br><br>
             <div class="col-md-7">
                 <?php if ($data['status'] == "Menunggu Pembayaran") { ?>

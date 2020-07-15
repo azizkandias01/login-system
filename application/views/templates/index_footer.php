@@ -88,6 +88,14 @@
        // Call Modal Edit
        $('#tolak').modal('show');
      });
+     $('.btn-hapus').on('click', function() {
+       // get data from button edit
+       const konfirmasi = $(this).data('hapus');
+       // Set data to Form Edit
+       $('.hapus').val(konfirmasi);
+       // Call Modal Edit
+       $('#hapus').modal('show');
+     });
    });
  </script>
  <script src="<?= base_url('assets/'); ?>vendor/jquery/jquery.min.js"></script>

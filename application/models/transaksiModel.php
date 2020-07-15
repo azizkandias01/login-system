@@ -47,4 +47,9 @@ class transaksiModel extends CI_Model
         $this->db->where('id_pembelian', $id);
         $this->db->update('pembelian2', $data);
     }
+    public function hapusTransaksi($id)
+    {
+        $this->db->where('id_pembelian', $id);
+        $this->db->delete('pembelian2');
+    }
 }

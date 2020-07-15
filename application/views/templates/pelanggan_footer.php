@@ -6,8 +6,8 @@
             <div class="col-md">
                 <div class="ftco-footer-widget mb-8">
 
-                    <h2 class="ftco-heading-2">PenariQ</h2>
-                    <p>Penyewaan penari dan alat musik. profesional dan terjamin.</p>
+                    <h2 class="ftco-heading-2">PupukKita</h2>
+                    <p>Pembelian pupuk mudah dan aman.</p>
                     <ul class="ftco-footer-social list-unstyled mt-5">
                         <li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
                         <li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li>
@@ -22,7 +22,7 @@
                         <ul>
                             <li><span class="icon icon-map-marker"></span><span class="text">JL. Sri meranti No.79, Tenayan Raya, Pekanbaru, Riau.</span></li>
                             <li><a href="#"><span class="icon icon-phone"></span><span class="text">+62 852 8322 4331</span></a></li>
-                            <li><a href="#"><span class="icon icon-envelope pr-4"></span><span class="text">info@penariQ.com</span></a></li>
+                            <li><a href="#"><span class="icon icon-envelope pr-4"></span><span class="text">info@PupukKita.com</span></a></li>
                         </ul>
                     </div>
                 </div>

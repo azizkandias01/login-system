@@ -74,7 +74,6 @@ class pupukModel extends CI_Model
     public function editPupuk()
     {
         $foto = $_FILES['pupuk_foto'];
-        var_dump($foto);
         if ($foto['name'] != '') {
             $id = $this->input->post('pupuk_id');
             $this->_deleteImage($id);

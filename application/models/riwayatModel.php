@@ -23,7 +23,7 @@ class riwayatModel extends CI_Model
     }
     public function getTotalItems($id)
     {
-        $query = "SELECT p.id_pembelian,p.id_pelanggan,p.id_pembayaran,p.status,p.total_pembelian,p.alamat,p.tanggal, COUNT(*) as total FROM pembelian2 p, pembelian_pupuk2 pp where p.id_pembelian=pp.id_pembelian AND p.id_pelanggan = '" . $id . "' GROUP BY p.id_pembelian";
+        $query = "SELECT p.id_pembelian,p.id_pelanggan,p.id_pembayaran,p.status,p.total_pembelian,p.alamat,p.tanggal, COUNT(*) as total FROM pembelian2 p, pembelian_pupuk2 pp where p.id_pembelian=pp.id_pembelian AND is_deleted <> 1 AND p.id_pelanggan = '" . $id . "' GROUP BY p.id_pembelian";
         $hasil = $this->db->query($query);
         return $hasil->result_array();
     }
@@ -44,5 +44,10 @@ class riwayatModel extends CI_Model
         $query = "select * from akun where id_akun=" . $id;
         $hasil = $this->db->query($query)->result_array();
         return $hasil;
+    }
+    public function delete($id, $data)
+    {
+        $this->db->where('id_pembelian', $id);
+        $this->db->update('pembelian2', $data);
     }
 }
